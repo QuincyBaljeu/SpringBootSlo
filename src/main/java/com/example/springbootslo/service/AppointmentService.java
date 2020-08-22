@@ -8,10 +8,10 @@ import org.springframework.stereotype.Service;
 @Service
 public class AppointmentService {
 
-    private final DataAccess appointmentDao;
+    private final DataAccess appointmentDataAccess;
 
     @Autowired
-    public AppointmentService(@Qualifier("AppointmentDAO") DataAccess dataAccess){
-        this.appointmentDao = dataAccess;
+    public AppointmentService(@Qualifier("PharmacyDAO") DataAccess dataAccess){
+        this.appointmentDataAccess = dataAccess;
     }
 }

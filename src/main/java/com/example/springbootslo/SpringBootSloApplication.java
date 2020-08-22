@@ -13,11 +13,7 @@ public class SpringBootSloApplication {
     public static void main(String[] args) {
        ConfigurableApplicationContext context = SpringApplication.run(SpringBootSloApplication.class, args);
 
-        Doctor doctorJan = new Doctor("Jan smit");
 
-        Patient patient1 = new Patient("Quincy Baljeu");
-
-       Appointment appointment1 = new Appointment(doctorJan, patient1);
     }
 
 }
