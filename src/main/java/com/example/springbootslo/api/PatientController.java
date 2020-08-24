@@ -11,7 +11,7 @@ import java.util.List;
 @RestController
 public class PatientController {
 
-    private PatientService patientService;
+    private final PatientService patientService;
 
     @Autowired
     public PatientController(PatientService patientService){

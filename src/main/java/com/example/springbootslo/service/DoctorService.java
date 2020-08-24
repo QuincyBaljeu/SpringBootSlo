@@ -16,12 +16,11 @@ public class DoctorService {
     @Autowired
     public DoctorService(@Qualifier("PharmacyDAO") DataAccess dataAccess){
         this.pharmacyDataAccess = dataAccess;
-        pharmacyDataAccess.addDoctor(new Doctor("Jan smit"));
+        //pharmacyDataAccess.addDoctor(new Doctor("Jan smit"));
     }
 
     public int addDoctor(Doctor doctor){
-        pharmacyDataAccess.addDoctor(doctor);
-        return 1;
+        return pharmacyDataAccess.addDoctor(doctor);
     }
 
     public List<Doctor> getDoctors(){
