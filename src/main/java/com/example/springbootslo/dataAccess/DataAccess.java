@@ -1,7 +1,8 @@
 package com.example.springbootslo.dataAccess;
 
-import com.example.springbootslo.objects.Doctor;
-import com.example.springbootslo.objects.Patient;
+import com.example.springbootslo.model.Appointment;
+import com.example.springbootslo.model.Doctor;
+import com.example.springbootslo.model.Patient;
 
 import java.util.List;
 
@@ -14,5 +15,9 @@ public interface DataAccess {
     //Patient
     int addPatient(Patient patient);
     List<Patient> getPatients();
+
+    //appointment
+    int addAppointment(Appointment appointment);
+    List<Appointment> getAppointments();
 
 }

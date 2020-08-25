@@ -1,4 +1,4 @@
-package com.example.springbootslo.objects;
+package com.example.springbootslo.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 

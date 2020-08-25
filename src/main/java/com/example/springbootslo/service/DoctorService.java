@@ -1,7 +1,7 @@
 package com.example.springbootslo.service;
 
 import com.example.springbootslo.dataAccess.DataAccess;
-import com.example.springbootslo.objects.Doctor;
+import com.example.springbootslo.model.Doctor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
@@ -16,7 +16,6 @@ public class DoctorService {
     @Autowired
     public DoctorService(@Qualifier("PharmacyDAO") DataAccess dataAccess){
         this.pharmacyDataAccess = dataAccess;
-        //pharmacyDataAccess.addDoctor(new Doctor("Jan smit"));
     }
 
     public int addDoctor(Doctor doctor){

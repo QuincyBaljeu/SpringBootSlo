@@ -1,7 +1,8 @@
 package com.example.springbootslo.dataAccess;
 
-import com.example.springbootslo.objects.Doctor;
-import com.example.springbootslo.objects.Patient;
+import com.example.springbootslo.model.Appointment;
+import com.example.springbootslo.model.Doctor;
+import com.example.springbootslo.model.Patient;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
@@ -12,6 +13,7 @@ public class PharmacyDataAccess implements DataAccess {
 
     private static List<Doctor> doctorlist = new ArrayList<>();
     private static List<Patient> patientList = new ArrayList<>();
+    private static List<Appointment> appointmentList = new ArrayList<>();
 
     @Override
     public int addDoctor(Doctor doctor) {
@@ -21,7 +23,7 @@ public class PharmacyDataAccess implements DataAccess {
 
     @Override
     public List<Doctor> getDoctors() {
-        return doctorlist;
+        return this.doctorlist;
     }
 
     @Override
@@ -32,6 +34,17 @@ public class PharmacyDataAccess implements DataAccess {
 
     @Override
     public List<Patient> getPatients() {
-        return patientList;
+        return this.patientList;
+    }
+
+    @Override
+    public int addAppointment(Appointment appointment) {
+        appointmentList.add(new Appointment(appointment.getDescription()));
+        return 1;
+    }
+
+    @Override
+    public List<Appointment> getAppointments() {
+        return this.appointmentList;
     }
 }
