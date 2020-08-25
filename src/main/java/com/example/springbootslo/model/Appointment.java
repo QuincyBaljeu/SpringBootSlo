@@ -1,7 +1,6 @@
-package com.example.springbootslo.objects;
+package com.example.springbootslo.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
 
@@ -11,15 +10,11 @@ public class Appointment {
     private Doctor doctor;
     private Patient patient;
     private LocalDate date;
-    @JsonProperty("description")
     private String description;
-    @JsonProperty("present")
     private boolean present;
 
-    public Appointment(Doctor doctor, Patient patient) {
-        this.doctor = doctor;
-        this.patient = patient;
-        present = false;
+    public Appointment(@JsonProperty("date") String date) {
+        this.description = date;
     }
 
     public Doctor getDoctor() {

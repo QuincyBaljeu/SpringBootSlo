@@ -1,6 +1,6 @@
 package com.example.springbootslo.api;
 
-import com.example.springbootslo.objects.Patient;
+import com.example.springbootslo.model.Patient;
 import com.example.springbootslo.service.PatientService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -11,7 +11,7 @@ import java.util.List;
 @RestController
 public class PatientController {
 
-    private PatientService patientService;
+    private final PatientService patientService;
 
     @Autowired
     public PatientController(PatientService patientService){

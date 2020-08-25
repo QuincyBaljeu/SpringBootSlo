@@ -1,12 +1,12 @@
-package com.example.springbootslo.objects;
+package com.example.springbootslo.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-public class Patient {
+public class Doctor {
 
     private String name;
 
-    public Patient(@JsonProperty("name") String name) {
+    public Doctor(@JsonProperty("name") String name) {
         this.name = name;
     }
 
