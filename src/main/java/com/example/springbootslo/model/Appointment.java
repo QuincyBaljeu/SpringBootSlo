@@ -9,7 +9,7 @@ public class Appointment {
 
     private Doctor doctor;
     private Patient patient;
-    private LocalDate date;
+    private String date;
     private String description;
     private boolean present;
 
@@ -33,11 +33,11 @@ public class Appointment {
         this.patient = patient;
     }
 
-    public LocalDate getDate() {
+    public String getDate() {
         return date;
     }
 
-    public void setDate(LocalDate date) {
+    public void setDate(String date) {
         this.date = date;
     }
 
