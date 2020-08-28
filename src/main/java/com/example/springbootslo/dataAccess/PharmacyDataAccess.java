@@ -7,6 +7,7 @@ import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 @Component("PharmacyDAO")
 public class PharmacyDataAccess implements DataAccess {
@@ -47,4 +48,13 @@ public class PharmacyDataAccess implements DataAccess {
     public List<Appointment> getAppointments() {
         return this.appointmentList;
     }
+
+    @Override
+    public int updateAppointmentInfo(UUID doctor) {
+        System.out.println("Doctor: " + doctor);
+
+        return 1;
+    }
+
+
 }

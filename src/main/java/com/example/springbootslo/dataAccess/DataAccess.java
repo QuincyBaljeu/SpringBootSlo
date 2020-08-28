@@ -5,6 +5,7 @@ import com.example.springbootslo.model.Doctor;
 import com.example.springbootslo.model.Patient;
 
 import java.util.List;
+import java.util.UUID;
 
 public interface DataAccess {
 
@@ -19,5 +20,5 @@ public interface DataAccess {
     //appointment
     int addAppointment(Appointment appointment);
     List<Appointment> getAppointments();
-
+    int updateAppointmentInfo(UUID doctor);
 }

@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.UUID;
 
 @RequestMapping("api/appointment")
 @RestController
@@ -26,5 +27,19 @@ public class AppointmentController {
     @GetMapping
     public List<Appointment> getAppointments(){
         return appointmentService.getAppointments();
+    }
+
+//    @PutMapping(path = "/{doctor}/{patient}/{description")
+//    public void updateInfo(@PathVariable("doctor") UUID doctorId,
+//        @PathVariable("patient") UUID patientId,
+//        @PathVariable("description") String description){
+//
+//        appointmentService.updateAppointmentInfo(doctorId, patientId, description);
+//    }
+
+    @PutMapping(path = "{doctor}")
+    public void updateInfo(@PathVariable("doctor") UUID doctorId){
+
+        appointmentService.updateAppointmentInfo(doctorId);
     }
 }

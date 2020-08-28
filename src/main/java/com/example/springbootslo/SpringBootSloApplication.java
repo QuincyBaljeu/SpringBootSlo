@@ -15,8 +15,7 @@ public class SpringBootSloApplication {
        ConfigurableApplicationContext context = SpringApplication.run(SpringBootSloApplication.class, args);
 
         PharmacyDataAccess dataAccess = context.getBean(PharmacyDataAccess.class);
-        LocalDate date = LocalDate.parse("2000-01-30");
-        dataAccess.addAppointment(new Appointment("2000-01-30"));
+
 
     }
 
