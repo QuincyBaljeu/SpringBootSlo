@@ -1,6 +1,7 @@
 package com.example.springbootslo.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import org.apache.tomcat.jni.Local;
 
 import java.time.LocalDate;
 
@@ -9,12 +10,12 @@ public class Appointment {
 
     private Doctor doctor;
     private Patient patient;
-    private String date;
+    private LocalDate date;
     private String description;
     private boolean present;
 
-    public Appointment(@JsonProperty("date") String date) {
-        this.description = date;
+    public Appointment(@JsonProperty("date") LocalDate date) {
+        this.date = date;
     }
 
     public Doctor getDoctor() {
@@ -33,11 +34,11 @@ public class Appointment {
         this.patient = patient;
     }
 
-    public String getDate() {
+    public LocalDate getDate() {
         return date;
     }
 
-    public void setDate(String date) {
+    public void setDate(LocalDate date) {
         this.date = date;
     }
 

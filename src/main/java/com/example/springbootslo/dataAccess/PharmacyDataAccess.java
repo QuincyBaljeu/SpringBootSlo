@@ -39,7 +39,7 @@ public class PharmacyDataAccess implements DataAccess {
 
     @Override
     public int addAppointment(Appointment appointment) {
-        appointmentList.add(new Appointment(appointment.getDescription()));
+        appointmentList.add(new Appointment(appointment.getDate()));
         return 1;
     }
 
