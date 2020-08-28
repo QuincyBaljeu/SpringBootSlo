@@ -50,9 +50,10 @@ public class PharmacyDataAccess implements DataAccess {
     }
 
     @Override
-    public int updateAppointmentInfo(UUID doctorId, UUID patientId) {
+    public int updateAppointmentInfo(UUID doctorId, UUID patientId, String description) {
         System.out.println("Doctor: " + doctorId);
         System.out.println("Patient: " + patientId);
+        System.out.print("Desc: " + description);
         return 1;
     }
 

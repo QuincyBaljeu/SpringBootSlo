@@ -37,10 +37,11 @@ public class AppointmentController {
 //        appointmentService.updateAppointmentInfo(doctorId, patientId, description);
 //    }
 
-    @PutMapping(path = "{doctor}/{patient}")
-    public void updateInfo(@PathVariable("doctor") UUID doctorId,
-                           @PathVariable("patient") UUID patientId){
+    @PutMapping(path = "{doctor}/{patient}/{description}")
+    public void updateAppointmentInfo(@PathVariable("doctor") UUID doctorId,
+                                      @PathVariable("patient") UUID patientId,
+                                      @PathVariable("description") String description){
 
-        appointmentService.updateAppointmentInfo(doctorId, patientId);
+        appointmentService.updateAppointmentInfo(doctorId, patientId, description);
     }
 }

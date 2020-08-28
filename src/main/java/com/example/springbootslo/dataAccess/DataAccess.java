@@ -20,5 +20,5 @@ public interface DataAccess {
     //appointment
     int addAppointment(Appointment appointment);
     List<Appointment> getAppointments();
-    int updateAppointmentInfo(UUID doctorId, UUID patientId);
+    int updateAppointmentInfo(UUID doctorId, UUID patientId, String description);
 }
