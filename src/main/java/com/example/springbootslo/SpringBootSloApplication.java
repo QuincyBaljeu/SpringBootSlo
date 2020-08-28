@@ -1,11 +1,12 @@
 package com.example.springbootslo;
 
-import com.example.springbootslo.objects.Appointment;
-import com.example.springbootslo.objects.Doctor;
-import com.example.springbootslo.objects.Patient;
+import com.example.springbootslo.dataAccess.PharmacyDataAccess;
+import com.example.springbootslo.model.Appointment;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
+
+import java.time.LocalDate;
 
 @SpringBootApplication
 public class SpringBootSloApplication {
@@ -13,11 +14,9 @@ public class SpringBootSloApplication {
     public static void main(String[] args) {
        ConfigurableApplicationContext context = SpringApplication.run(SpringBootSloApplication.class, args);
 
-        Doctor doctorJan = new Doctor("Jan smit");
+        PharmacyDataAccess dataAccess = context.getBean(PharmacyDataAccess.class);
 
-        Patient patient1 = new Patient("Quincy Baljeu");
 
-       Appointment appointment1 = new Appointment(doctorJan, patient1);
     }
 
 }

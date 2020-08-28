@@ -1,8 +1,11 @@
-package com.example.springbootslo.objects;
+package com.example.springbootslo.model;
 
-import org.springframework.stereotype.Component;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import org.springframework.cglib.core.Local;
 
+import java.time.DateTimeException;
 import java.time.LocalDate;
+import java.time.format.DateTimeParseException;
 
 
 public class Appointment {
@@ -13,10 +16,20 @@ public class Appointment {
     private String description;
     private boolean present;
 
-    public Appointment(Doctor doctor, Patient patient) {
-        this.doctor = doctor;
-        this.patient = patient;
-        present = false;
+    public Appointment(@JsonProperty("date") String date) {
+        LocalDate formattedDate;
+        try {
+            formattedDate = LocalDate.parse(date);
+        } catch (DateTimeParseException e){
+            System.out.println("Could not parse Date");
+            return;
+        }
+
+        this.date = formattedDate;
+    }
+
+    public Appointment(LocalDate date){
+        this.date = date;
     }
 
     public Doctor getDoctor() {
