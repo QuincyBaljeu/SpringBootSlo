@@ -5,6 +5,7 @@ import com.example.springbootslo.model.Doctor;
 import com.example.springbootslo.model.Patient;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 public interface DataAccess {
@@ -20,5 +21,6 @@ public interface DataAccess {
     //appointment
     int addAppointment(Appointment appointment);
     List<Appointment> getAppointments();
-    int updateAppointmentInfo(UUID doctorId, UUID patientId, String description);
+    int updateAppointmentInfo(UUID appointmentId, UUID doctorId, UUID patientId, String description);
+    Optional<Appointment> getAppointmentById(List<Appointment> list, UUID id);
 }
