@@ -27,7 +27,7 @@ public class AppointmentService {
         return pharmacyDataAccess.getAppointments();
     }
 
-    public int updateAppointmentInfo(UUID doctorId, UUID patientID, String description){
-        return pharmacyDataAccess.updateAppointmentInfo(doctorId, patientID, description);
+    public int updateAppointmentInfo(UUID appointmentID, UUID doctorId, UUID patientID, String description){
+        return pharmacyDataAccess.updateAppointmentInfo(appointmentID, doctorId, patientID, description);
     }
 }

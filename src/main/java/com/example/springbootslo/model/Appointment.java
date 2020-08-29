@@ -6,10 +6,12 @@ import org.springframework.cglib.core.Local;
 import java.time.DateTimeException;
 import java.time.LocalDate;
 import java.time.format.DateTimeParseException;
+import java.util.UUID;
 
 
 public class Appointment {
 
+    private UUID appointmentId;
     private Doctor doctor;
     private Patient patient;
     private LocalDate date;
@@ -26,10 +28,16 @@ public class Appointment {
         }
 
         this.date = formattedDate;
+        this.appointmentId = UUID.randomUUID();
     }
 
     public Appointment(LocalDate date){
         this.date = date;
+        this.appointmentId = UUID.randomUUID();
+    }
+
+    public UUID getAppointmentId() {
+        return appointmentId;
     }
 
     public Doctor getDoctor() {
