@@ -13,12 +13,10 @@ public interface DataAccess {
     //Doctor
     int addDoctor(Doctor doctor);
     List<Doctor> getDoctors();
-    Optional<Doctor> getDoctorById(List<Doctor> list, UUID id);
 
     //Patient
     int addPatient(Patient patient);
     List<Patient> getPatients();
-    Optional<Patient> getPatientById(List<Patient> list, UUID id);
 
     //appointment
     int addAppointment(Appointment appointment);

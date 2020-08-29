@@ -16,6 +16,7 @@ public class Appointment {
     private String description;
     private boolean active;
 
+    //BUG: class still gets created when date is invalid
     public Appointment(@JsonProperty("date") String date) {
         LocalDate formattedDate;
         try {

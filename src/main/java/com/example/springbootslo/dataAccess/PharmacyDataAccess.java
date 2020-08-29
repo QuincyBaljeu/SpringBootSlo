@@ -4,6 +4,8 @@ import com.example.springbootslo.model.Appointment;
 import com.example.springbootslo.model.Doctor;
 import com.example.springbootslo.model.Patient;
 import com.example.springbootslo.util.AppointmentUtilities;
+import com.example.springbootslo.util.DoctorUtilities;
+import com.example.springbootslo.util.PatientUtilities;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -22,6 +24,10 @@ public class PharmacyDataAccess implements DataAccess {
 
     @Autowired
     private AppointmentUtilities appointmentUtilities;
+    @Autowired
+    private DoctorUtilities doctorUtilities;
+    @Autowired
+    PatientUtilities patientUtilities;
 
     @Override
     public int addDoctor(Doctor doctor) {
@@ -35,13 +41,6 @@ public class PharmacyDataAccess implements DataAccess {
     }
 
     @Override
-    public Optional<Doctor> getDoctorById(List<Doctor> list, UUID id) {
-        return list.stream()
-                .filter(doctor -> doctor.getId().equals(id))
-                .findFirst();
-    }
-
-    @Override
     public int addPatient(Patient patient) {
         patientList.add(new Patient(patient.getName()));
         return 1;
@@ -50,13 +49,6 @@ public class PharmacyDataAccess implements DataAccess {
     @Override
     public List<Patient> getPatients() {
         return this.patientList;
-    }
-
-    @Override
-    public Optional<Patient> getPatientById(List<Patient> list, UUID id) {
-        return list.stream()
-                .filter(patient -> patient.getId().equals(id))
-                .findFirst();
     }
 
     @Override
@@ -74,8 +66,8 @@ public class PharmacyDataAccess implements DataAccess {
     public int updateAppointmentInfo(UUID appointmentId,UUID doctorId, UUID patientId, String description) {
 
         Optional<Appointment> appointmentToUpdate = appointmentUtilities.getAppointmentById(appointmentList, appointmentId);
-        Optional<Doctor> doctorToAdd = getDoctorById(doctorlist, doctorId);
-        Optional<Patient> patientToAdd = getPatientById(patientList, patientId);
+        Optional<Doctor> doctorToAdd = doctorUtilities.getDoctorById(doctorlist, doctorId);
+        Optional<Patient> patientToAdd = patientUtilities.getPatientById(patientList, patientId);
 
         if(!appointmentUtilities.validateAppointmentUpdateInfo(appointmentToUpdate, doctorToAdd, patientToAdd)){
             System.out.println("No appointment found with matching id");
@@ -88,6 +80,17 @@ public class PharmacyDataAccess implements DataAccess {
 
         return 1;
     }
+
+    /**
+     *  Updates the active status of an appointment and archives it if neccessary.
+     *
+     *
+     * @param  appointmentId Id of appointment which will be updated
+     * @param  activity int to inidicate active status. >1 equals active appointment <1 equals inactive appointment
+     *
+     * @return Statuscode
+     *
+     */
 
     @Override
     public int updateAppointmentActivity(UUID appointmentId, int activity) {
