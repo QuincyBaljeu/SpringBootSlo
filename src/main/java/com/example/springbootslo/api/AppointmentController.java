@@ -29,13 +29,11 @@ public class AppointmentController {
         return appointmentService.getAppointments();
     }
 
-//    @PutMapping(path = "/{doctor}/{patient}/{description")
-//    public void updateInfo(@PathVariable("doctor") UUID doctorId,
-//        @PathVariable("patient") UUID patientId,
-//        @PathVariable("description") String description){
-//
-//        appointmentService.updateAppointmentInfo(doctorId, patientId, description);
-//    }
+    @PutMapping(path = "{appointment}/{presence}")
+    public void updatePresence(@PathVariable("appointment") UUID appointmentId,
+                               @PathVariable("presence") int presence){
+        appointmentService.updatePresence(appointmentId, presence);
+    }
 
     @PutMapping(path = "{appointment}/{doctor}/{patient}/{description}")
     public void updateAppointmentInfo(@PathVariable("appointment") UUID appointmentId,

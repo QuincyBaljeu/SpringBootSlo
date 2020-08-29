@@ -66,7 +66,7 @@ public class PharmacyDataAccess implements DataAccess {
 
     @Override
     public int updateAppointmentInfo(UUID appointmentId,UUID doctorId, UUID patientId, String description) {
-    
+
         Optional<Appointment> appointmentToUpdate = getAppointmentById(appointmentList, appointmentId);
         Optional<Doctor> doctorToAdd = getDoctorById(doctorlist, doctorId);
         Optional<Patient> patientToAdd = getPatientById(patientList, patientId);
@@ -88,6 +88,14 @@ public class PharmacyDataAccess implements DataAccess {
         return list.stream()
                 .filter(appointment -> appointment.getAppointmentId().equals(id))
                 .findFirst();
+    }
+
+    @Override
+    public int updatePresence(UUID appointmentID, int presence) {
+
+        System.out.print(appointmentID);
+        System.out.print(presence);
+        return 1;
     }
 
     @Override

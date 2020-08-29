@@ -25,6 +25,7 @@ public interface DataAccess {
     List<Appointment> getAppointments();
     int updateAppointmentInfo(UUID appointmentId, UUID doctorId, UUID patientId, String description);
     Optional<Appointment> getAppointmentById(List<Appointment> list, UUID id);
+    int updatePresence(UUID appointmentId, int presence);
 
     //Extra
     boolean validateAppointmentUpdateInfo(Optional<Appointment> appointment, Optional<Doctor> doctor, Optional<Patient> patient);
