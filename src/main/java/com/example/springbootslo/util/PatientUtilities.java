@@ -10,6 +10,16 @@ import java.util.UUID;
 @Component("PatientUtilities")
 public class PatientUtilities {
 
+    /**
+     *
+     *
+     * @param list list in which the method will search
+     * @param id id of requested patient
+     *
+     * @return Optional which will contain the found patient, will be empty if not found
+     *
+     */
+
     public Optional<Patient> getPatientById(List<Patient> list, UUID id) {
         return list.stream()
                 .filter(patient -> patient.getId().equals(id))

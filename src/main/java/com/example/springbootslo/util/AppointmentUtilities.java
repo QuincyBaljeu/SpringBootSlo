@@ -20,11 +20,32 @@ public class AppointmentUtilities {
         }
     }
 
+    /**
+     *
+     *
+     * @param list list in which the method will search
+     * @param id id of requested appointment
+     *
+     * @return Optional which will contain the found appointment, will be empty if not found
+     *
+     */
+
     public Optional<Appointment> getAppointmentById(List<Appointment> list, UUID id) {
         return list.stream()
                 .filter(appointment -> appointment.getAppointmentId().equals(id))
                 .findFirst();
     }
+
+    /**
+     *
+     *
+     * @param appointmentList List with active appointments to remove appointment from
+     * @param appointmentArchive List with archived appointments to add appointment to
+     * @param appointmentId id of appointment to archive
+     *
+     * @return
+     *
+     */
 
     public int setAppointmentToInactive(List<Appointment> appointmentList, List<Appointment> appointmentArchive, UUID appointmentId) {
 
@@ -40,6 +61,17 @@ public class AppointmentUtilities {
         appointmentArchive.add(appointmentToUpdate.get());
         return 1;
     }
+
+    /**
+     *
+     *
+     * @param appointmentList list with active appointments add appointment to
+     * @param appointmentArchive List with archived appointments remove appointment from
+     * @param appointmentId Id of appointment to set to active
+     *
+     * @return Statuscode
+     *
+     */
 
     public int setAppointmentToActive(List<Appointment> appointmentList, List<Appointment> appointmentArchive, UUID appointmentId) {
 

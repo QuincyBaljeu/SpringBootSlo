@@ -62,6 +62,18 @@ public class PharmacyDataAccess implements DataAccess {
         return this.appointmentList;
     }
 
+    /**
+     *
+     *
+     * @param appointmentId id of appointment which will be updated
+     * @param doctorId id of doctor which will be added to appointment
+     * @param patientId id of patient which will be added to appointment
+     * @param description String with description which will be added to appointment
+     *
+     * @return Statuscode
+     *
+     */
+
     @Override
     public int updateAppointmentInfo(UUID appointmentId,UUID doctorId, UUID patientId, String description) {
 
