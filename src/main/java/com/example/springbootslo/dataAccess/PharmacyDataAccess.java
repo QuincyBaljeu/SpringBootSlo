@@ -67,18 +67,17 @@ public class PharmacyDataAccess implements DataAccess {
 
     @Override
     public List<Appointment> getAppointments() {
-        appointmentUtilities.test();
         return this.appointmentList;
     }
 
     @Override
     public int updateAppointmentInfo(UUID appointmentId,UUID doctorId, UUID patientId, String description) {
 
-        Optional<Appointment> appointmentToUpdate = getAppointmentById(appointmentList, appointmentId);
+        Optional<Appointment> appointmentToUpdate = appointmentUtilities.getAppointmentById(appointmentList, appointmentId);
         Optional<Doctor> doctorToAdd = getDoctorById(doctorlist, doctorId);
         Optional<Patient> patientToAdd = getPatientById(patientList, patientId);
 
-        if(!validateAppointmentUpdateInfo(appointmentToUpdate, doctorToAdd, patientToAdd)){
+        if(!appointmentUtilities.validateAppointmentUpdateInfo(appointmentToUpdate, doctorToAdd, patientToAdd)){
             System.out.println("No appointment found with matching id");
             return 0;
         }
@@ -91,65 +90,13 @@ public class PharmacyDataAccess implements DataAccess {
     }
 
     @Override
-    public Optional<Appointment> getAppointmentById(List<Appointment> list, UUID id) {
-        return list.stream()
-                .filter(appointment -> appointment.getAppointmentId().equals(id))
-                .findFirst();
-    }
-
-    @Override
     public int updateAppointmentActivity(UUID appointmentId, int activity) {
 
         if(activity > 0) {
-            return setAppointmentToActive(appointmentId);
+            return appointmentUtilities.setAppointmentToActive(appointmentList, appointmentArchive,appointmentId);
         } else {
-            return setAppointmentToInactive(appointmentId);
+            return appointmentUtilities.setAppointmentToInactive(appointmentList, appointmentArchive,appointmentId);
         }
 
     }
-
-    @Override
-    public int setAppointmentToInactive(UUID appointmentId) {
-
-        Optional<Appointment> appointmentToUpdate = getAppointmentById(appointmentList, appointmentId);
-
-        if(appointmentToUpdate.isEmpty()){
-            System.out.println("No appointment found with matching id");
-            return 0;
-        }
-
-        appointmentToUpdate.get().setActive(false);
-        appointmentList.remove(appointmentToUpdate.get());
-        appointmentArchive.add(appointmentToUpdate.get());
-        return 1;
-    }
-
-    @Override
-    public int setAppointmentToActive(UUID appointmentId) {
-
-        Optional<Appointment> appointmentToUpdate = getAppointmentById(appointmentArchive, appointmentId);
-
-        if(appointmentToUpdate.isEmpty()){
-            System.out.println("No appointment found with matching id");
-            return 0;
-        }
-
-
-        appointmentToUpdate.get().setActive(true);
-        appointmentArchive.remove(appointmentToUpdate.get());
-        appointmentList.add(appointmentToUpdate.get());
-
-        return 1;
-    }
-
-    @Override
-    public boolean validateAppointmentUpdateInfo(Optional<Appointment> appointment, Optional<Doctor> doctor, Optional<Patient> patient) {
-        if(appointment.isPresent() && doctor.isPresent() && patient.isPresent()){
-            return true;
-        } else {
-            return false;
-        }
-    }
-
-
 }

@@ -24,11 +24,5 @@ public interface DataAccess {
     int addAppointment(Appointment appointment);
     List<Appointment> getAppointments();
     int updateAppointmentInfo(UUID appointmentId, UUID doctorId, UUID patientId, String description);
-    Optional<Appointment> getAppointmentById(List<Appointment> list, UUID id);
     int updateAppointmentActivity(UUID appointmentId, int activity);
-    int setAppointmentToInactive(UUID appointmentId);
-    int setAppointmentToActive(UUID appointmentId);
-
-    //Extra
-    boolean validateAppointmentUpdateInfo(Optional<Appointment> appointment, Optional<Doctor> doctor, Optional<Patient> patient);
 }

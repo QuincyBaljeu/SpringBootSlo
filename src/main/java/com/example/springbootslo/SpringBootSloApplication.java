@@ -2,6 +2,8 @@ package com.example.springbootslo;
 
 import com.example.springbootslo.dataAccess.PharmacyDataAccess;
 import com.example.springbootslo.model.Appointment;
+import com.example.springbootslo.model.Doctor;
+import com.example.springbootslo.model.Patient;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
@@ -16,6 +18,8 @@ public class SpringBootSloApplication {
 
         PharmacyDataAccess dataAccess = context.getBean(PharmacyDataAccess.class);
 
+        dataAccess.addDoctor(new Doctor("Quincy Baljeu"));
+        dataAccess.addPatient(new Patient("Jan janssen"));
 
     }
 
