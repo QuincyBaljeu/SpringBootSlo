@@ -16,6 +16,7 @@ public class PharmacyDataAccess implements DataAccess {
     private static List<Doctor> doctorlist = new ArrayList<>();
     private static List<Patient> patientList = new ArrayList<>();
     private static List<Appointment> appointmentList = new ArrayList<>();
+    private static List<Appointment> appointmentArchive = new ArrayList<>();
 
     @Override
     public int addDoctor(Doctor doctor) {
@@ -91,10 +92,47 @@ public class PharmacyDataAccess implements DataAccess {
     }
 
     @Override
-    public int updatePresence(UUID appointmentID, int presence) {
+    public int updateAppointmentActivity(UUID appointmentId, int activity) {
 
-        System.out.print(appointmentID);
-        System.out.print(presence);
+        if(activity > 0) {
+            return setAppointmentToActive(appointmentId);
+        } else {
+            return setAppointmentToInactive(appointmentId);
+        }
+
+    }
+
+    @Override
+    public int setAppointmentToInactive(UUID appointmentId) {
+
+        Optional<Appointment> appointmentToUpdate = getAppointmentById(appointmentList, appointmentId);
+
+        if(appointmentToUpdate.isEmpty()){
+            System.out.println("No appointment found with matching id");
+            return 0;
+        }
+
+        appointmentToUpdate.get().setActive(false);
+        appointmentList.remove(appointmentToUpdate.get());
+        appointmentArchive.add(appointmentToUpdate.get());
+        return 1;
+    }
+
+    @Override
+    public int setAppointmentToActive(UUID appointmentId) {
+
+        Optional<Appointment> appointmentToUpdate = getAppointmentById(appointmentArchive, appointmentId);
+
+        if(appointmentToUpdate.isEmpty()){
+            System.out.println("No appointment found with matching id");
+            return 0;
+        }
+
+
+        appointmentToUpdate.get().setActive(true);
+        appointmentArchive.remove(appointmentToUpdate.get());
+        appointmentList.add(appointmentToUpdate.get());
+
         return 1;
     }
 

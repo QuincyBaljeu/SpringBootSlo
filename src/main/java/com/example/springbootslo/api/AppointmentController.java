@@ -29,10 +29,10 @@ public class AppointmentController {
         return appointmentService.getAppointments();
     }
 
-    @PutMapping(path = "{appointment}/{presence}")
+    @PutMapping(path = "{appointment}/{activity}")
     public void updatePresence(@PathVariable("appointment") UUID appointmentId,
-                               @PathVariable("presence") int presence){
-        appointmentService.updatePresence(appointmentId, presence);
+                               @PathVariable("activity") int activity){
+        appointmentService.updateActivity(appointmentId, activity);
     }
 
     @PutMapping(path = "{appointment}/{doctor}/{patient}/{description}")

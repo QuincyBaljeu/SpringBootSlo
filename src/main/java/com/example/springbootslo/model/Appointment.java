@@ -1,9 +1,7 @@
 package com.example.springbootslo.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import org.springframework.cglib.core.Local;
 
-import java.time.DateTimeException;
 import java.time.LocalDate;
 import java.time.format.DateTimeParseException;
 import java.util.UUID;
@@ -16,7 +14,7 @@ public class Appointment {
     private Patient patient;
     private LocalDate date;
     private String description;
-    private boolean present;
+    private boolean active;
 
     public Appointment(@JsonProperty("date") String date) {
         LocalDate formattedDate;
@@ -29,11 +27,13 @@ public class Appointment {
 
         this.date = formattedDate;
         this.appointmentId = UUID.randomUUID();
+        this.active = true;
     }
 
     public Appointment(LocalDate date){
         this.date = date;
         this.appointmentId = UUID.randomUUID();
+        this.active = true;
     }
 
     public UUID getAppointmentId() {
@@ -72,11 +72,11 @@ public class Appointment {
         this.description = description;
     }
 
-    public boolean isPresent() {
-        return present;
+    public boolean isActive() {
+        return active;
     }
 
-    public void setPresent(boolean present) {
-        this.present = present;
+    public void setActive(boolean active) {
+        this.active = active;
     }
 }
