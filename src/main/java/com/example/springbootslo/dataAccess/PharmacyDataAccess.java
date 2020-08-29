@@ -3,6 +3,8 @@ package com.example.springbootslo.dataAccess;
 import com.example.springbootslo.model.Appointment;
 import com.example.springbootslo.model.Doctor;
 import com.example.springbootslo.model.Patient;
+import com.example.springbootslo.util.AppointmentUtilities;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
@@ -17,6 +19,9 @@ public class PharmacyDataAccess implements DataAccess {
     private static List<Patient> patientList = new ArrayList<>();
     private static List<Appointment> appointmentList = new ArrayList<>();
     private static List<Appointment> appointmentArchive = new ArrayList<>();
+
+    @Autowired
+    private AppointmentUtilities appointmentUtilities;
 
     @Override
     public int addDoctor(Doctor doctor) {
@@ -62,6 +67,7 @@ public class PharmacyDataAccess implements DataAccess {
 
     @Override
     public List<Appointment> getAppointments() {
+        appointmentUtilities.test();
         return this.appointmentList;
     }
 
