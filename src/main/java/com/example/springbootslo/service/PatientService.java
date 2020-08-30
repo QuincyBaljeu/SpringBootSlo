@@ -1,7 +1,7 @@
 package com.example.springbootslo.service;
 
 import com.example.springbootslo.dataAccess.DataAccess;
-import com.example.springbootslo.objects.Patient;
+import com.example.springbootslo.model.Patient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;

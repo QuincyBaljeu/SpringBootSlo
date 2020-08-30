@@ -1,6 +1,6 @@
 package com.example.springbootslo.api;
 
-import com.example.springbootslo.objects.Doctor;
+import com.example.springbootslo.model.Doctor;
 import com.example.springbootslo.service.DoctorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
