@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.UUID;
 
 @Service
 public class AppointmentService {
@@ -24,5 +25,13 @@ public class AppointmentService {
 
     public List<Appointment> getAppointments(){
         return pharmacyDataAccess.getAppointments();
+    }
+
+    public int updateAppointmentInfo(UUID appointmentID, UUID doctorId, UUID patientID, String description){
+        return pharmacyDataAccess.updateAppointmentInfo(appointmentID, doctorId, patientID, description);
+    }
+
+    public int updateActivity(UUID appointmentId, int presence){
+        return pharmacyDataAccess.updateAppointmentActivity(appointmentId, presence);
     }
 }
